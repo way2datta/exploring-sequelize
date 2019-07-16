@@ -1,5 +1,3 @@
-process.env.NODE_ENV = "test";
-
 import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
 
@@ -34,8 +32,21 @@ describe("API Routes", () => {
         .request(app)
         .get("/api/users")
         .end((err, res) => {
-           console.log(res.body);
           expect(res.status).to.equal(200);
+          expect(res).to.be.json;
+          expect(res.body).to.be.a("array");
+          done();
+        });
+    });
+  });
+
+  describe("POST /v1/users", () => {
+    it.only("should create a user", done => {
+      chai
+        .request(app)
+        .post("/api/users")
+        .end((err, res) => {
+          expect(res.status).to.equal(201);
           expect(res).to.be.json;
           expect(res.body).to.be.a("array");
           done();

@@ -14,6 +14,15 @@ function app(models) {
       res.status(500).json({ error: e, message: e.message })
     })
   })
+
+  app.post('/api/users', (req, res) => {
+    models.User.findAll().then(users => {
+      //console.log(users)
+      if (users) res.status(201).json(users)
+    }).catch(e => {
+      res.status(500).json({ error: e, message: e.message })
+    })
+  })
   
   return app
 }

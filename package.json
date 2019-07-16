@@ -23,7 +23,7 @@
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --require @babel/register --timeout 50000",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --require @babel/register --timeout 50000",
     "test:watch": "npm test -- --watch",
     "start": "node server.js"
   },
