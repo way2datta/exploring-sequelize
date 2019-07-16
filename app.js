@@ -8,7 +8,7 @@ function app(models) {
 
   app.get('/api/users', (req, res) => {
     models.User.findAll().then(users => {
-      console.log(users)
+      //console.log(users)
       if (users) res.status(200).json(users)
     }).catch(e => {
       res.status(500).json({ error: e, message: e.message })

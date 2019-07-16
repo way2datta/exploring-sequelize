@@ -16,9 +16,9 @@ describe("API Routes", () => {
   beforeEach(done => {
     models.sequelize
       .sync({
-        force: true
+        force: true,
         //match: /_test$/,
-        //  logging: false
+         logging: false
       })
       .then(() => {
         return seed(models);
@@ -34,7 +34,7 @@ describe("API Routes", () => {
         .request(app)
         .get("/api/users")
         .end((err, res) => {
-          // console.log(res.body);
+           console.log(res.body);
           expect(res.status).to.equal(200);
           expect(res).to.be.json;
           expect(res.body).to.be.a("array");
